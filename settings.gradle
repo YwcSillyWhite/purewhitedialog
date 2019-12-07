@@ -1,0 +1,3 @@
+rootProject.name='purewhiledialog'
+include ':app'
+include ':dialog'

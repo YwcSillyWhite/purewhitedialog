@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //透明
+    <style name="BaseDialog" parent="Theme.AppCompat.Dialog">
+        <!-- window半透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 显示在activity上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 没有边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- window无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--  布局透明  -->
+        <item name="android:background">@android:color/transparent</item>
+        <!--  window透明  -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--模糊-->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+
+    <!-- 无色 -->
+    <style name="BaseDialogNo" parent="BaseDialog">
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+
+
+    <style name="LeftWindowAnimStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pw_dialog_enter_l</item>
+        <item name="android:windowExitAnimation">@anim/pw_dialog_exit_l</item>
+    </style>
+
+    <style name="RightWindowAnimStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pw_dialog_enter_r</item>
+        <item name="android:windowExitAnimation">@anim/pw_dialog_exit_r</item>
+    </style>
+
+    <style name="TopWindowAnimStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pw_dialog_enter_t</item>
+        <item name="android:windowExitAnimation">@anim/pw_dialog_exit_t</item>
+    </style>
+
+    <style name="BottomWindowAnimStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pw_dialog_enter_b</item>
+        <item name="android:windowExitAnimation">@anim/pw_dialog_exit_b</item>
+    </style>
+
+</resources>
