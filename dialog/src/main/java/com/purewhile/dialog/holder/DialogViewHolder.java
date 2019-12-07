@@ -1,8 +1,8 @@
 package com.purewhile.dialog.holder;
 
-import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.IdRes;
@@ -22,7 +22,7 @@ public class DialogViewHolder<D extends DialogViewHolder> {
         this.sparseArray = new SparseArray();
     }
 
-    public View fdView(@IdRes int id){
+    public  View fdView(@IdRes int id){
         View view = sparseArray.get(id);
         if (view == null){
             view = dialogView.findViewById(id);
@@ -32,13 +32,19 @@ public class DialogViewHolder<D extends DialogViewHolder> {
     }
 
     public D setText(@IdRes int id,String content){
-        if (!TextUtils.isEmpty(content)){
-            View view = fdView(id);
-            if (view != null && view instanceof TextView){
-                ((TextView) view).setText(content);
-            }
+        View view = fdView(id);
+        if (view != null && view instanceof TextView){
+            ((TextView) view).setText(content);
         }
         return (D) this;
+    }
+
+    public D setRadioCheckListener(@IdRes int id, RadioGroup.OnCheckedChangeListener checkedChangeListener){
+        View view = fdView(id);
+        if (view != null && view instanceof RadioGroup){
+            ((RadioGroup) view).setOnCheckedChangeListener(checkedChangeListener);
+        }
+        return ((D) this);
     }
 
 

@@ -1,7 +1,5 @@
 package com.purewhile.dialog.help;
 
-import android.app.Dialog;
-
 import com.purewhile.dialog.DialogUtils;
 
 /**
