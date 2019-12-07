@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -21,13 +22,13 @@ public class DialogBuilder {
     //点击事件
     private View.OnClickListener onClickListener;
     //dialog的动画
-    private int dialogAnim;
+    private int dialogAnim ;
     //主题
     private int themeRes =R.style.BaseDialog;
     //点击外面是否取消
     private boolean canceledOnTouchOutside=true;
     //点击返回键是否取消
-    private boolean canceled;
+    private boolean canceled=true;
     //取消监听
     private DialogInterface.OnDismissListener onDismissListener;
     //键盘按键监听
@@ -63,7 +64,7 @@ public class DialogBuilder {
      * @param dialogAnim
      * @return
      */
-    public DialogBuilder setDialogAnim(@IdRes int dialogAnim) {
+    public DialogBuilder setDialogAnim(int dialogAnim) {
         this.dialogAnim = dialogAnim;
         return this;
     }
@@ -119,6 +120,7 @@ public class DialogBuilder {
         return this;
     }
 
+
     /**
      *设置 大小和位置
      * @param width       宽
@@ -151,14 +153,15 @@ public class DialogBuilder {
             dialog.setOnDismissListener(onDismissListener);
         if (onKeyListener != null)
             dialog.setOnKeyListener(onKeyListener);
+
         Window window = dialog.getWindow();
         if (dialogAnim != 0)
             window.setWindowAnimations(dialogAnim);
-        if (width>0 || height>0 || deviationX!=0 || deviationY!=0 || gravity!=0){
+        if (width!=0 || height!=0 || deviationX!=0 || deviationY!=0 || gravity!=0){
             WindowManager.LayoutParams layoutParams = window.getAttributes();
-            if (width > 0)
+            if (width != 0)
                 layoutParams.width = width;
-            if (height > 0)
+            if (height != 0)
                 layoutParams.height = height;
             if (deviationX!=0)
                 layoutParams.x = deviationX;
@@ -166,6 +169,7 @@ public class DialogBuilder {
                 layoutParams.y = deviationY;
             if (gravity!=0)
                 layoutParams.gravity =gravity;
+            window.setAttributes(layoutParams);
         }
 
         return new DialogUtils(dialogView,onClickListener,dialog);

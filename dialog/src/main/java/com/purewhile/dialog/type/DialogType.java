@@ -13,7 +13,7 @@ public class DialogType {
     @Retention(RetentionPolicy.SOURCE)
     public @interface Visibility {}
 
-    @IntDef({Gravity.TOP, Gravity.BOTTOM,Gravity.LEFT, Gravity.RIGHT,Gravity.CENTER})
+    @IntDef({Gravity.TOP, Gravity.BOTTOM,Gravity.LEFT, Gravity.RIGHT,Gravity.CENTER,0})
     @Retention(RetentionPolicy.SOURCE)
     public @interface gravity {}
 }
