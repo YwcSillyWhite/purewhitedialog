@@ -1,4 +1,4 @@
-package com.purewhile.purewhiledialog;
+package com.purewhite.purewhitedialog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.purewhile.dialog.DialogUtils;
-import com.purewhile.dialog.anim.DialogAnimStyle;
+import com.purewhite.dialog.DialogUtils;
+import com.purewhite.dialog.anim.DialogAnimStyle;
 
 public class MainActivity extends AppCompatActivity {
 

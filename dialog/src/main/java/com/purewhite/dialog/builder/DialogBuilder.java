@@ -1,4 +1,4 @@
-package com.purewhile.dialog.builder;
+package com.purewhite.dialog.builder;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -10,9 +10,9 @@ import android.view.WindowManager;
 
 import androidx.annotation.LayoutRes;
 
-import com.purewhile.dialog.DialogUtils;
-import com.purewhile.dialog.R;
-import com.purewhile.dialog.type.DialogType;
+import com.purewhite.dialog.DialogUtils;
+import com.purewhite.dialog.R;
+import com.purewhite.dialog.type.DialogType;
 
 public class DialogBuilder {
     //dialog布局

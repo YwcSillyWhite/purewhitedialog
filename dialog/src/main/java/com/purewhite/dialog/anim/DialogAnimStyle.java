@@ -1,6 +1,6 @@
-package com.purewhile.dialog.anim;
+package com.purewhite.dialog.anim;
 
-import com.purewhile.dialog.R;
+import com.purewhite.dialog.R;
 
 public class DialogAnimStyle {
 

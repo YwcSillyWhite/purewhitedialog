@@ -1,10 +1,10 @@
-package com.purewhile.dialog;
+package com.purewhite.dialog;
 
 import android.app.Dialog;
 import android.view.View;
 
-import com.purewhile.dialog.builder.DialogBuilder;
-import com.purewhile.dialog.holder.DialogViewHolder;
+import com.purewhite.dialog.builder.DialogBuilder;
+import com.purewhite.dialog.holder.DialogViewHolder;
 
 public class DialogUtils extends DialogViewHolder<DialogUtils> {
 

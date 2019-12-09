@@ -1,4 +1,4 @@
-package com.purewhile.dialog;
+package com.purewhite.dialog;
 
 import android.content.Context;
 

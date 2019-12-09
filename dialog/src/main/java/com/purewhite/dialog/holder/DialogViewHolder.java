@@ -1,4 +1,4 @@
-package com.purewhile.dialog.holder;
+package com.purewhite.dialog.holder;
 
 import android.util.SparseArray;
 import android.view.View;
@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import androidx.annotation.IdRes;
 
-import com.purewhile.dialog.type.DialogType;
+import com.purewhite.dialog.type.DialogType;
 
 public class DialogViewHolder<D extends DialogViewHolder> {
 

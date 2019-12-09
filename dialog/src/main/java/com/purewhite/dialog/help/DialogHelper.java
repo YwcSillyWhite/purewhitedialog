@@ -1,6 +1,6 @@
-package com.purewhile.dialog.help;
+package com.purewhite.dialog.help;
 
-import com.purewhile.dialog.DialogUtils;
+import com.purewhite.dialog.DialogUtils;
 
 /**
  * dialog帮助类

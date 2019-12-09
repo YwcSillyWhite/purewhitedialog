@@ -1,4 +1,4 @@
-package com.purewhile.dialog.type;
+package com.purewhite.dialog.type;
 
 import android.view.Gravity;
 import android.view.View;
