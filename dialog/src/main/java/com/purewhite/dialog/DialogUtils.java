@@ -6,10 +6,11 @@ import android.view.View;
 import com.purewhite.dialog.builder.DialogBuilder;
 import com.purewhite.dialog.holder.DialogViewHolder;
 
-public class DialogUtils extends DialogViewHolder<DialogUtils> {
+public class DialogUtils extends DialogViewHolder<DialogUtils>{
 
 
     private Dialog dialog;
+
     //获取dialog
     public Dialog obtianDialog(){
         return dialog;

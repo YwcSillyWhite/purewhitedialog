@@ -24,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
                 DialogUtils.build().setLayoutId(R.layout.dialog_one)
                         .setDialogAnim(DialogAnimStyle.bottom_anim)
                         .setSplace(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT,0,0, Gravity.CENTER)
-                        .buildDialog(this).show();
+                        .buildDialog(this)
+                        .setEnable(R.id.bottom,true)
+                        .show();
                 break;
         }
     }

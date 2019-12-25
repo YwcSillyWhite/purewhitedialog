@@ -139,8 +139,6 @@ public class DialogBuilder {
 
 
 
-
-
     public DialogUtils buildDialog(Context context){
         View dialogView = LayoutInflater.from(context).inflate(layoutId!=0 ? layoutId : R.layout.dialog_error, null);
         Dialog dialog = new Dialog(context, themeRes);
@@ -170,6 +168,21 @@ public class DialogBuilder {
             window.setAttributes(layoutParams);
         }
 
+        return new DialogUtils(dialogView,onClickListener,dialog);
+    }
+
+
+
+    public DialogUtils buildBottomSheetDialog(Context context){
+        View dialogView = LayoutInflater.from(context).inflate(layoutId!=0 ? layoutId : R.layout.dialog_error, null);
+        com.google.android.material.bottomsheet.BottomSheetDialog dialog = new com.google.android.material.bottomsheet.BottomSheetDialog(context, themeRes);
+        dialog.setContentView(dialogView);
+        dialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
+        dialog.setCancelable(canceled);
+        if (onDismissListener != null)
+            dialog.setOnDismissListener(onDismissListener);
+        if (onKeyListener != null)
+            dialog.setOnKeyListener(onKeyListener);
         return new DialogUtils(dialogView,onClickListener,dialog);
     }
 }
