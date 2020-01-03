@@ -12,7 +12,7 @@ public class DialogUtils extends DialogViewHolder<DialogUtils>{
     private Dialog dialog;
 
     //获取dialog
-    public Dialog obtianDialog(){
+    public Dialog obtainDialog(){
         return dialog;
     }
 
@@ -29,7 +29,7 @@ public class DialogUtils extends DialogViewHolder<DialogUtils>{
      * 显示
      */
     public void show(){
-        if (dialog!=null){
+        if (null!=dialog && !dialog.isShowing()){
             dialog.show();
         }
     }
@@ -38,7 +38,7 @@ public class DialogUtils extends DialogViewHolder<DialogUtils>{
      * 隐藏
      */
     public void dismiss(){
-        if (dialog!=null){
+        if (null!=dialog && dialog.isShowing()){
             dialog.dismiss();
         }
     }

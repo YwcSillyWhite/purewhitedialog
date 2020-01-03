@@ -10,13 +10,13 @@ public class DialogHelper {
 
     //显示
     public static void show(DialogUtils dialogUtils){
-        if (dialogUtils!=null)
+        if (null!=dialogUtils)
             dialogUtils.show();
     }
 
     //隐藏
     public  static void dismiss(DialogUtils ...dialogUtils){
-        if (dialogUtils!=null && dialogUtils.length>0){
+        if (null!=dialogUtils && dialogUtils.length>0){
             for (int i = 0; i < dialogUtils.length; i++) {
                 dialogUtils[i].dismiss();
             }

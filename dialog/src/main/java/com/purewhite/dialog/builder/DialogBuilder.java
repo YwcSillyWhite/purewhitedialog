@@ -10,13 +10,14 @@ import android.view.WindowManager;
 
 import androidx.annotation.LayoutRes;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.purewhite.dialog.DialogUtils;
 import com.purewhite.dialog.R;
 import com.purewhite.dialog.type.DialogType;
 
 public class DialogBuilder {
     //dialog布局
-    private int layoutId = R.layout.dialog_error;
+    private int layoutId;
     //点击事件
     private View.OnClickListener onClickListener;
     //dialog的动画
@@ -145,9 +146,9 @@ public class DialogBuilder {
         dialog.setContentView(dialogView);
         dialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
         dialog.setCancelable(canceled);
-        if (onDismissListener != null)
+        if (null != onDismissListener)
             dialog.setOnDismissListener(onDismissListener);
-        if (onKeyListener != null)
+        if (null != onKeyListener)
             dialog.setOnKeyListener(onKeyListener);
 
         Window window = dialog.getWindow();
@@ -172,16 +173,20 @@ public class DialogBuilder {
     }
 
 
-
+    /***
+     * 使用这个方法需要注意,必须导入androidx包 material
+     * @param context
+     * @return
+     */
     public DialogUtils buildBottomSheetDialog(Context context){
         View dialogView = LayoutInflater.from(context).inflate(layoutId!=0 ? layoutId : R.layout.dialog_error, null);
-        com.google.android.material.bottomsheet.BottomSheetDialog dialog = new com.google.android.material.bottomsheet.BottomSheetDialog(context, themeRes);
+        BottomSheetDialog dialog = new BottomSheetDialog(context, themeRes);
         dialog.setContentView(dialogView);
         dialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
         dialog.setCancelable(canceled);
-        if (onDismissListener != null)
+        if (null != onDismissListener)
             dialog.setOnDismissListener(onDismissListener);
-        if (onKeyListener != null)
+        if (null != onKeyListener)
             dialog.setOnKeyListener(onKeyListener);
         return new DialogUtils(dialogView,onClickListener,dialog);
     }
