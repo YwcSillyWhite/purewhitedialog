@@ -41,3 +41,10 @@ Step 2. Add the dependency
         DialogHelper.dismiss(dialogUtils); //隐藏dialog
         DialogHelper.show(dialogUtils); //显示dialog
 ```
+### 注意事项
+```java
+1.要使用buildBottomSheetDialog必须导入androidx包下material包
+2.要使用setRecyclerAndroidX必须导入androidx包下material包
+3.要使用setImageGlide必须到导入glide
+```
+
