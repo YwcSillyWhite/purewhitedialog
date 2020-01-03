@@ -6,7 +6,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.IdRes;
-
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.purewhite.dialog.type.DialogType;
 
@@ -123,12 +123,12 @@ public class DialogViewHolder<D extends DialogViewHolder>{
         return ((D) this);
     }
 
-    public D setRecycler(@IdRes int id, androidx.recyclerview.widget.RecyclerView.Adapter adapter,androidx.recyclerview.widget.RecyclerView.LayoutManager layoutManager){
+    public D setRecycler(@IdRes int id, RecyclerView.Adapter adapter, RecyclerView.LayoutManager layoutManager){
         if (adapter == null || layoutManager==null)
             return (D)this;
         View view = obtainView(id);
-        if (view != null && view instanceof androidx.recyclerview.widget.RecyclerView){
-            androidx.recyclerview.widget.RecyclerView recyclerView = (androidx.recyclerview.widget.RecyclerView)view;
+        if (view != null && view instanceof RecyclerView){
+            RecyclerView recyclerView = (RecyclerView)view;
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(adapter);
         }
