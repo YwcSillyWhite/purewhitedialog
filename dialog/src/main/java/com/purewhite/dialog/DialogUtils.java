@@ -1,29 +1,42 @@
 package com.purewhite.dialog;
 
 import android.app.Dialog;
-import android.view.View;
 
 import com.purewhite.dialog.builder.DialogBuilder;
 import com.purewhite.dialog.holder.DialogViewHolder;
 
-public class DialogUtils extends DialogViewHolder<DialogUtils>{
-
-
-    private Dialog dialog;
-
-    //获取dialog
-    public Dialog obtainDialog(){
-        return dialog;
-    }
-
-    public DialogUtils(View dialogView, View.OnClickListener onClickListener, Dialog dialog) {
-        super(dialogView, onClickListener);
-        this.dialog=dialog;
-    }
+public class DialogUtils {
 
     public static DialogBuilder build(){
         return new DialogBuilder();
     }
+
+    //隐藏
+    public static void dismiss(DialogUtils ...dialogUtils){
+        if (null!=dialogUtils && dialogUtils.length>0){
+            for (int i = 0; i < dialogUtils.length; i++) {
+                dialogUtils[i].dismiss();
+            }
+        }
+    }
+
+    private Dialog dialog;
+    private DialogViewHolder dialogViewHolder;
+
+    //获取dialog
+    public Dialog getDialog() {
+        return dialog;
+    }
+
+    public DialogViewHolder getDialogViewHolder() {
+        return dialogViewHolder;
+    }
+
+    public DialogUtils(DialogViewHolder dialogViewHolder, Dialog dialog) {
+        this.dialogViewHolder = dialogViewHolder;
+        this.dialog=dialog;
+    }
+
 
     /**
      * 显示

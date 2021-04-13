@@ -9,6 +9,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 public class DialogType {
+
     @IntDef({View.VISIBLE, View.GONE, View.INVISIBLE})
     @Retention(RetentionPolicy.SOURCE)
     public @interface Visibility {}

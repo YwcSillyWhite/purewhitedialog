@@ -10,16 +10,16 @@ import android.view.WindowManager;
 
 import androidx.annotation.LayoutRes;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.purewhite.dialog.DialogUtils;
 import com.purewhite.dialog.R;
+import com.purewhite.dialog.holder.DialogViewHolder;
+import com.purewhite.dialog.io.DialogIo;
 import com.purewhite.dialog.type.DialogType;
 
 public class DialogBuilder {
+
     //dialog布局
     private int layoutId;
-    //点击事件
-    private View.OnClickListener onClickListener;
     //dialog的动画
     private int dialogAnim ;
     //主题
@@ -33,7 +33,11 @@ public class DialogBuilder {
     //键盘按键监听
     private DialogInterface.OnKeyListener onKeyListener;
     //设置dialog的大小,显示位置
-    private int width,height,deviationX,deviationY,gravity;
+    private int width = WindowManager.LayoutParams.MATCH_PARENT;
+    private int height = WindowManager.LayoutParams.WRAP_CONTENT;
+    private int deviationX,deviationY,gravity;
+    //回调设置数据
+    private DialogIo dialogIo;
 
     /**
      * 设置布局
@@ -46,13 +50,9 @@ public class DialogBuilder {
         return this;
     }
 
-    /**
-     * 设置点击事件
-     * @param onClickListener
-     * @return
-     */
-    public DialogBuilder setOnClickListener(View.OnClickListener onClickListener) {
-        this.onClickListener = onClickListener;
+
+    public DialogBuilder setDialogIo(DialogIo dialogIo) {
+        this.dialogIo = dialogIo;
         return this;
     }
 
@@ -120,18 +120,24 @@ public class DialogBuilder {
     }
 
 
+    public DialogBuilder setHeight(int height) {
+        this.height = height;
+        return this;
+    }
+
+    public DialogBuilder setWidth(int width) {
+        this.width = width;
+        return this;
+    }
+
     /**
-     *设置 大小和位置
-     * @param width       宽
-     * @param height      高
+     *设置 位置
      * @param deviationX  偏移x
      * @param deviationY  偏移y
      * @param gravity     显示位置
      * @return
      */
-    public DialogBuilder setSplace(int width,int height,int deviationX,int deviationY,@DialogType.gravity int gravity){
-        this.width=width;
-        this.height=height;
+    public DialogBuilder setSplace(int deviationX,int deviationY,@DialogType.gravity int gravity){
         this.deviationX=deviationX;
         this.deviationY=deviationY;
         this.gravity=gravity;
@@ -142,6 +148,7 @@ public class DialogBuilder {
 
     public DialogUtils buildDialog(Context context){
         View dialogView = LayoutInflater.from(context).inflate(layoutId!=0 ? layoutId : R.layout.dialog_error, null);
+        DialogViewHolder dialogViewHolder = new DialogViewHolder(dialogView);
         Dialog dialog = new Dialog(context, themeRes);
         dialog.setContentView(dialogView);
         dialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
@@ -150,44 +157,40 @@ public class DialogBuilder {
             dialog.setOnDismissListener(onDismissListener);
         if (null != onKeyListener)
             dialog.setOnKeyListener(onKeyListener);
-
         Window window = dialog.getWindow();
         if (dialogAnim != 0)
             window.setWindowAnimations(dialogAnim);
-        if (width!=0 || height!=0 || deviationX!=0 || deviationY!=0 || gravity!=0){
-            WindowManager.LayoutParams layoutParams = window.getAttributes();
-            if (width != 0)
-                layoutParams.width = width;
-            if (height != 0)
-                layoutParams.height = height;
-            if (deviationX!=0)
-                layoutParams.x = deviationX;
-            if (deviationY!=0)
-                layoutParams.y = deviationY;
-            if (gravity!=0)
-                layoutParams.gravity =gravity;
-            window.setAttributes(layoutParams);
-        }
-
-        return new DialogUtils(dialogView,onClickListener,dialog);
+        WindowManager.LayoutParams layoutParams = window.getAttributes();
+        layoutParams.width = width;
+        layoutParams.height = height;
+        if (deviationX!=0)
+            layoutParams.x = deviationX;
+        if (deviationY!=0)
+            layoutParams.y = deviationY;
+        if (gravity!=0)
+            layoutParams.gravity =gravity;
+        window.setAttributes(layoutParams);
+        if (null != dialogIo)
+            dialogIo.initView(dialogViewHolder);
+        return new DialogUtils(dialogViewHolder,dialog);
     }
 
 
-    /***
-     * 使用这个方法需要注意,必须导入androidx包 material
-     * @param context
-     * @return
-     */
-    public DialogUtils buildBottomSheetDialog(Context context){
-        View dialogView = LayoutInflater.from(context).inflate(layoutId!=0 ? layoutId : R.layout.dialog_error, null);
-        BottomSheetDialog dialog = new BottomSheetDialog(context, themeRes);
-        dialog.setContentView(dialogView);
-        dialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
-        dialog.setCancelable(canceled);
-        if (null != onDismissListener)
-            dialog.setOnDismissListener(onDismissListener);
-        if (null != onKeyListener)
-            dialog.setOnKeyListener(onKeyListener);
-        return new DialogUtils(dialogView,onClickListener,dialog);
-    }
+//    /***
+//     * 使用这个方法需要注意,必须导入androidx包 material
+//     * @param context
+//     * @return
+//     */
+//    public DialogUtils buildBottomSheetDialog(Context context){
+//        View dialogView = LayoutInflater.from(context).inflate(layoutId!=0 ? layoutId : R.layout.dialog_error, null);
+//        BottomSheetDialog dialog = new BottomSheetDialog(context, themeRes);
+//        dialog.setContentView(dialogView);
+//        dialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
+//        dialog.setCancelable(canceled);
+//        if (null != onDismissListener)
+//            dialog.setOnDismissListener(onDismissListener);
+//        if (null != onKeyListener)
+//            dialog.setOnKeyListener(onKeyListener);
+//        return new DialogUtils(dd,onClickListener,dialog);
+//    }
 }

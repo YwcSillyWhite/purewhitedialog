@@ -2,10 +2,14 @@ package com.purewhite.dialog.anim;
 
 import com.purewhite.dialog.R;
 
-public class DialogAnimStyle {
 
+/**
+ *
+ */
+public class DialogAnimStyle {
     public static final int left_anim=R.style.LeftWindowAnimStyle;
     public static final int right_anim= R.style.RightWindowAnimStyle;
     public static final int top_anim=R.style.TopWindowAnimStyle;
     public static final int bottom_anim=R.style.BottomWindowAnimStyle;
+
 }
